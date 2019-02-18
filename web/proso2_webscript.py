@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from squence_maker import SequenceMaker
-from database import DbInterface
+from database_interface import DbInterface
 
 
 class prosoWeb:
@@ -42,7 +42,7 @@ class prosoWeb:
 								n, length):
 		print("Begin Mining...")
 		for i in range(n):
-			
+
 			#Initialize data buffer
 			data = []
 
@@ -87,8 +87,3 @@ class prosoWeb:
 		self.DbInterface.close_connection()
 		self.n += n * 50
 		print("Uploaded " + str(self.n) + " rows so far.")
-
-
-
-P = prosoWeb()
-P.start_unconstrained(1, 10)
