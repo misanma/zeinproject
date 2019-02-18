@@ -60,7 +60,7 @@ class prosoWeb:
 			self.driver.find_element_by_id("form1:j_id24").click()
 
 			#Wait for data table to be loaded
-			wait = WebDriverWait(self.driver, 100)
+			wait = WebDriverWait(self.driver, 1000000)
 			element = wait.until(EC.invisibility_of_element_located((By.ID, "_viewRoot:status.start")))
 
 			#Parsing raw HTML response and locate the result table
@@ -70,7 +70,7 @@ class prosoWeb:
 
 			#Prepare data buffer to be written to database
 			index = 0
-			for i in range(2, 3*3, 3):
+			for i in range(2, 3*50, 3):
 				temp = slubs[i].text.split(';')
 				data[index][0] = True if temp[0] == 'soluble' else False
 				data[index][1] = float(temp[1])
@@ -78,6 +78,7 @@ class prosoWeb:
 
 			#Upload data to database
 			for item in data:
+				print(item)
 				self.DbInterface.insert(item)
 
 			#Clear

@@ -17,7 +17,7 @@ class DbInterface:
 					+self.table_name \
 					+" (prediction, solubility, n_sub, charge, numK, numR, numH, numD, numE, seq)"\
 					+" VALUES"\
-					+" ('+ str(result)[1:-1] + ');")
+					+' ('+ str(result)[1:-1] + ');')
 		self.conn.commit()
 
 	def close_connection(self):
